@@ -24,7 +24,9 @@ do {
 	inputValue = prompt(
 		'Please enter your birthdate as the following format (DD – MM – YYYY)'
 	);
-	if (!isValideInputString(inputValue)) {
+	if (inputValue === null || inputValue.length === 0) {
+		alert('Please enter a date!');
+	} else if (!isValideInputString(inputValue)) {
 		alert('Wrong Date Format');
 	} else {
 		console.log(createFormatedDate(inputValue));
@@ -68,11 +70,20 @@ function createFormatedDate(inputValue) {
 }
 
 function countCharachtersEqualTo(inputString, comparedCharacter) {
-	return (
-		Boolean(inputString.indexOf(comparedCharacter)) +
-		Boolean(inputString.lastIndexOf(comparedCharacter))
-	);
+	var count = 0;
+	for (var i = 0; i < inputString.length; i++) {
+		if (inputString[i] === comparedCharacter) {
+			count++;
+		}
+	}
+	return count;
 }
-
-console.log(hasCharachtersEqualTo('11-11-1111', '-'));
+console.log(countCharachtersEqualTo('11-11-1111', '-'));
 console.log(isValideInputString(inputValue));
+
+// function hasCharachtersEqualTo(inputString, comparedCharacter) {
+// 	return (
+// 		Boolean(inputString.indexOf(comparedCharacter)) +
+// 		Boolean(inputString.lastIndexOf(comparedCharacter))
+// 	);
+// }
